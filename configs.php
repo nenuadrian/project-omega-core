@@ -14,7 +14,7 @@ abstract class Configs {
   }
   
   public static function get($key) {
-    if (!$key) return null;
+    if (!$key || !Configs::$configs) return null;
     return Configs::$configs[$key];
   }
 }
