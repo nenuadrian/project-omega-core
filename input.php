@@ -9,14 +9,11 @@ abstract class Input {
 
         $data = json_decode($json, true);
 
-        if ($data === null) {
-            throw new Exception('Error decoding JSON data');
+        if ($data !== null) {
+          $_POST = array_merge($_POST ?: [], $data);
         }
 
-        $_POST = array_merge($_POST ?: [], $data);
-
         return $_POST[$field] ?? null;
-        
     }
 
     public static function get(string $field): ?string {
