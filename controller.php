@@ -9,10 +9,9 @@ abstract class Controller {
         if (method_exists($this, $page)) {
             try {
                 if ($this->guard()) {
-
                     call_user_func_array([$this, $page], $params);
                 } else {
-                    $this->json(403);
+                    $this->guardFail();
                 }
             } catch (Exception $error) {
                 $message = $error->getMessage();
@@ -29,6 +28,10 @@ abstract class Controller {
         if (!headers_sent()) {
             header('Location: ' . $url);
         }
+    }
+  
+    protected function guardFail() {
+      $this->json(403);
     }
 
     protected function json(int $status, ?array $data = null, string $error = null) {
