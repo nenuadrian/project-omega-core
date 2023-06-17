@@ -71,6 +71,7 @@ function mvc(): void {
     if (get_class($controller) !== 'SetupController') {
       require 'database.php';
     }
+    $controller->init();
     $page = !$page || empty($page) ? 'index' : $page;
     $controller->routes($page, $parameters);
 }
