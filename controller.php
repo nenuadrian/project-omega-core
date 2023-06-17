@@ -3,6 +3,8 @@
 abstract class Controller {
     protected function guard(): bool { return true; }
 
+    public function init(): void { }
+    
     public function routes(?string $page, ?array $params = []): void {
         $page = $page ? $page : 'index';
         $page = method_exists($this, $page) ? $page : 'index';
