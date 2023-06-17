@@ -39,7 +39,9 @@ function generateBaseURL(): string {
     // by combining /my-php with other variables on $_SERVER we can build the URL
     // REQUEST_SCHEME is http and HTTP_HOST is localhost:8888 in our example
     // hence the result is  http://localhost:8888/my-php
-    return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $baseUrlPath;
+    $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $baseUrlPath;
+    $baseUrl = substr($baseUrl, 0, $baseUrl[strlen($baseUrl) - 1] == '/' ? strlen($baseUrl) - 1 : strlen($baseUrl));
+    return $baseUrl;
 }
 
 function mvc(): void {
