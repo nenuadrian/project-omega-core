@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
 abstract class Controller {
+    protected $tVars = [];
+    
     protected function guard(): bool { return true; }
 
     public function init(): void { }
