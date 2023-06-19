@@ -65,7 +65,7 @@ function mvc(): void {
         $parameters = $path;
         unset($parameters[0], $parameters[1]);
         if (isset($parameters[2])) unset($parameters[2]);
-        $parameters = array_values(array_filter($parameters, function($p) { return $p && $p[0] != '&'; }));
+        $parameters = array_values(array_filter($parameters, function($p) { return $p != '' && $p[0] != '&'; }));
         
     }
     Configs::init();
