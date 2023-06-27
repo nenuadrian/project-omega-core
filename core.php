@@ -12,6 +12,7 @@ spl_autoload_register(function ($class_name) {
     }
 });
 
+require 'language.php';
 require 'controller.php';
 require 'input.php';
 require 'model.php';
